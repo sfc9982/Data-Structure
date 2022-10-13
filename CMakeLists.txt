@@ -1,0 +1,12 @@
+cmake_minimum_required(VERSION 3.20)
+project(Data-Structure)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
+
+add_executable(8550 10/Exp.8/8550.cpp)
+add_executable(8549 10/Exp.8/8549.cpp)
+add_executable(8548 10/Exp.8/8548.cpp)
+add_executable(8559 10/Exp.1/8559.cpp)
+add_executable(8553 10/Exp.1/8553.cpp)
+add_executable(8554 10/Exp.1/8554.cpp)
+add_executable(8555 10/Exp.1/8555.cpp)
+add_executable(8556 10/Exp.1/8556.cpp)

@@ -1,0 +1,3 @@
+"D:\Program Files\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\cmake\win\bin\cmake.exe" -E rm -f CMakeFiles\8553.dir/objects.a
+"D:\Program Files\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\ar.exe" qc CMakeFiles\8553.dir/objects.a @CMakeFiles\8553.dir\objects1.rsp
+"D:\Program Files\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe" -Wall -std=c++17 -g -Wl,--whole-archive CMakeFiles\8553.dir/objects.a -Wl,--no-whole-archive -o 8553.exe -Wl,--out-implib,lib8553.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\8553.dir\linklibs.rsp

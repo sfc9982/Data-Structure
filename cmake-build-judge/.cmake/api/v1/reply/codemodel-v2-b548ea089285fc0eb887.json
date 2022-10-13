@@ -1,0 +1,123 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.20"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "Data-Structure",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "8548::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-8548-Debug-d1444777937fa6dd3fbd.json",
+					"name" : "8548",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "8549::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-8549-Debug-ce02129b93ac28ad6b19.json",
+					"name" : "8549",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "8550::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-8550-Debug-96bb5728a51a166bb696.json",
+					"name" : "8550",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "8553::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-8553-Debug-95705f268a07f453fdc5.json",
+					"name" : "8553",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "8554::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-8554-Debug-5ca1076c8d47936b7a30.json",
+					"name" : "8554",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "8555::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-8555-Debug-838710dc1f2296b81765.json",
+					"name" : "8555",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "8556::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-8556-Debug-bb652afe746491c09144.json",
+					"name" : "8556",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "8559::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-8559-Debug-9637534ff4d2158161af.json",
+					"name" : "8559",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "D:/Code/Data-Structure/cmake-build-judge",
+		"source" : "D:/Code/Data-Structure"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 4
+	}
+}
