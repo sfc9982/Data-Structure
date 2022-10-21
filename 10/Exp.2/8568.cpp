@@ -15,14 +15,19 @@
 using namespace std;
 
 int n;
-
+int cnt = 17;
 
 void printQueue(queue<int> Q)
 {
+    for (int i = 0; i < cnt; ++i)
+    {
+        putchar(' ');
+    }
+    cnt -= 2;
     while (!Q.empty())
     {
         if (Q.front())
-            cout << Q.front() << " ";
+            cout << Q.front() << "   ";
         Q.pop();
     }
     cout << endl;
@@ -30,6 +35,7 @@ void printQueue(queue<int> Q)
 
 int main()
 {
+    cin >> n;
     queue<int> Q; // 不重复造轮子了
     Q.push(0), Q.push(1), Q.push(0);
 
@@ -46,15 +52,5 @@ int main()
         }
         Q.push(0);
     }
-
-    //    cout << R"(              1
-    //             1  1
-    //            1  2  1
-    //          1  3  3  1
-    //        1  4  6  4  1
-    //      1  5  10  10  5  1
-    //    1  6  15  20  15  6  1
-    //  1  7  21  35  35  21  7  1
-    //1  8  28  56  70  56  28  8  1)";
     return 0;
 }
