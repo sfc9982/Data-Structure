@@ -14,38 +14,55 @@
 
 using namespace std;
 
-const int N = 100;
-
+struct Node {
+    int data;
+    Node *next;
+};
 
 class Queue {
 public:
-    int a[N];
-    int front = 0;
-    int rear = 0;
+    Node *head, *tail;
+    int size;
 
-    int size()
+    Queue()
     {
-        return rear - front;
+        head = tail = nullptr;
+        size = 0;
     }
 
-    void insert(int x)
+    void push(int x)
     {
-        a[rear++] = x;
+        Node *p = new Node;
+        p->data = x;
+        p->next = nullptr;
+        if (head == nullptr)
+            head = tail = p;
+        else
+            tail->next = p, tail = p;
+        size++;
     }
 
     void pop()
     {
-        ++front;
+        Node *p = head;
+        head = head->next;
+        delete p;
+        size--;
     }
 
-    int top()
+    int front()
     {
-        return a[front];
+        return head->data;
+    }
+
+    int back()
+    {
+        return tail->data;
     }
 
     bool empty()
     {
-        return front == rear;
+        return size == 0;
     }
 };
 
@@ -53,17 +70,12 @@ int main()
 {
     Queue Q;
     int n;
-
     while (cin >> n && n)
-    {
-        Q.insert(n);
-    }
-
+        Q.push(n);
     while (!Q.empty())
     {
-        cout << Q.top() << " ";
+        cout << Q.front() << " ";
         Q.pop();
     }
-
     return 0;
 }
