@@ -20,10 +20,11 @@ struct Node {
 };
 
 class Queue {
-public:
+private:
     Node *head, *tail;
     int size;
 
+public:
     Queue()
     {
         head = tail = nullptr;
