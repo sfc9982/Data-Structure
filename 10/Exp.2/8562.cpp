@@ -1,5 +1,5 @@
 //
-// Created by sfc9982 on 2022/10/19.
+// Created by sfc9982 on 2022/10/30.
 //
 
 #include <algorithm>
@@ -19,28 +19,25 @@ struct Node {
     Node *next;
 };
 
-class Queue {
+class Stack {
 private:
-    Node *head, *tail;
-    int size;
+    Node *head;
+    int n;
 
 public:
-    Queue()
+    Stack()
     {
-        head = tail = nullptr;
-        size = 0;
+        head = nullptr;
+        n = 0;
     }
 
     void push(int x)
     {
         Node *p = new Node;
         p->data = x;
-        p->next = nullptr;
-        if (head == nullptr)
-            head = tail = p;
-        else
-            tail->next = p, tail = p;
-        size++;
+        p->next = head;
+        head = p;
+        n++;
     }
 
     void pop()
@@ -48,35 +45,39 @@ public:
         Node *p = head;
         head = head->next;
         delete p;
-        size--;
+        n--;
     }
 
-    int front()
+    int top()
     {
         return head->data;
     }
 
-    int back()
+    bool empty()
     {
-        return tail->data;
+        return n == 0;
     }
 
-    [[nodiscard]] bool empty() const
+    int size()
     {
-        return size == 0;
+        return n;
     }
 };
 
 int main()
 {
-    Queue Q;
+    Stack S;
     int n;
+
     while (cin >> n && n)
-        Q.push(n);
-    while (!Q.empty())
     {
-        cout << Q.front() << " ";
-        Q.pop();
+        S.push(n);
+    }
+
+    while (!S.empty())
+    {
+        cout << S.top() << " ";
+        S.pop();
     }
     return 0;
 }
