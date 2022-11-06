@@ -15,15 +15,15 @@ struct Node {
     {
         coeff = c;
         pow = p;
-        next = NULL;
+        next = nullptr;
     }
 };
 void append(struct Node **head_ref, struct Node **tail_ref,
             int new_data, int new_data1)
 {
-    struct Node *new_node = new Node(new_data, new_data1);
+    auto *new_node = new Node(new_data, new_data1);
 
-    if (*head_ref == NULL)
+    if (*head_ref == nullptr)
         *head_ref = new_node;
     else
         (*tail_ref)->next = new_node;
@@ -33,7 +33,7 @@ void printList(struct Node *head)
 {
     struct Node *temp = head;
 
-    while (temp != NULL)
+    while (temp != nullptr)
     {
         printf("%d %d ", temp->coeff, temp->pow);
         temp = temp->next;
@@ -44,17 +44,17 @@ void create_node(int x, int y, struct Node **temp)
 {
     struct Node *r, *z;
     z = *temp;
-    if (z == NULL)
+    if (z == nullptr)
     {
         r = new Node(x, y);
         *temp = r;
-        r->next = NULL;
+        r->next = nullptr;
     }
     else
     {
         r->next = new Node(x, y);
         r = r->next;
-        r->next = NULL;
+        r->next = nullptr;
     }
 }
 
@@ -65,7 +65,7 @@ public:
         Node *res = new Node(
                 0, 0);
         Node *prev = res;
-        while (p1 != NULL and p2 != NULL)
+        while (p1 != nullptr and p2 != nullptr)
         {
             if (p1->pow < p2->pow)
             {
@@ -88,11 +88,11 @@ public:
                 p2 = p2->next;
             }
         }
-        if (p1 != NULL)
+        if (p1 != nullptr)
         {
             prev->next = p1;
         }
-        if (p2 != NULL)
+        if (p2 != nullptr)
         {
             prev->next = p2;
         }
@@ -102,8 +102,8 @@ public:
 
 int main()
 {
-    struct Node *poly1 = NULL, *poly2 = NULL, *poly = NULL;
-    struct Node *tail1 = NULL, *tail2 = NULL;
+    struct Node *poly1 = nullptr, *poly2 = nullptr, *poly = nullptr;
+    struct Node *tail1 = nullptr, *tail2 = nullptr;
     int a, x, T;
     char comma;
     cin >> T;
@@ -131,6 +131,5 @@ int main()
     for (int i = 0; i <= 1000; ++i)
         if (bucket[i])
             cout << bucket[i] << "*x^" << i << " ";
-    // 李洋老师对不起，不用鸽巢排序不会了
     cout << endl;
 }

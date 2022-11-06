@@ -36,7 +36,7 @@ void printQueue(queue<int> Q)
 int main()
 {
     cin >> n;
-    queue<int> Q; // 不重复造轮子了
+    queue<int> Q;
     Q.push(0), Q.push(1), Q.push(0);
 
     cin >> n;

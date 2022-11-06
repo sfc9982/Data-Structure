@@ -90,7 +90,6 @@ void Change(int num, int w, Stack *S)
         remain = n % w;
         if (div != 0)
         {
-            //余数入栈,更新num
             Push(S, remain);
             n = div;
         }
