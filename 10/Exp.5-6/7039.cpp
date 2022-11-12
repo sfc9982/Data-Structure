@@ -32,26 +32,18 @@ VertexNode G[MAXNODE];
 
 bool visit[MAXNODE];
 
-void bfs(int v)
+void dfs(int v)
 {
-    queue<int> q;
-    q.push(v);
-    visit[v] = true;
-    while (!q.empty())
+    cout << v << " ";
+    ArcNode *p = G[v].firstarc;
+    while (p != nullptr)
     {
-        int u = q.front();
-        q.pop();
-        cout << "v" << u << " ";
-        ArcNode *p = G[u].firstarc;
-        while (p != nullptr)
+        if (!visit[p->adjvex])
         {
-            if (!visit[p->adjvex])
-            {
-                visit[p->adjvex] = true;
-                q.push(p->adjvex);
-            }
-            p = p->next;
+            visit[p->adjvex] = true;
+            dfs(p->adjvex);
         }
+        p = p->next;
     }
 }
 
@@ -75,13 +67,19 @@ int main()
         p->adjvex = y;
         p->next = G[x].firstarc;
         G[x].firstarc = p;
-        auto *q = new ArcNode;
-        q->adjvex = x;
-        q->next = G[y].firstarc;
-        G[y].firstarc = q;
     }
 
-    bfs(1);
+    for (int i = 1; i <= n; i++)
+    {
+        cout << G[i].data << ":";
+        for (auto j = G[i].firstarc; j != nullptr; j = j->next)
+        {
+            cout << j->adjvex << " ";
+        }
+        cout << endl;
+    }
+
+    dfs(1);
 
     return 0;
 }
