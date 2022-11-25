@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.20)
 project(Data-Structure)
 #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
-set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_CXX_STANDARD 20)
 # 98 11 14 17 20 23 26
 message(STATUS "CMAKE_CXX_STANDARD: C++${CMAKE_CXX_STANDARD}")
 
