@@ -5,11 +5,20 @@ set(CMAKE_CXX_STANDARD 20)
 # 98 11 14 17 20 23 26
 message(STATUS "CMAKE_CXX_STANDARD: C++${CMAKE_CXX_STANDARD}")
 
-list(APPEND SOURCE_DIR "10/Exp.7")
+find_program(CCACHE_FOUND ccache)
+if (CCACHE_FOUND)
+    message(STATUS "ccache enabled")
+    set_property(GLOBAL PROPERTY RULE_LAUNCH_COMPILE ccache)
+    set_property(GLOBAL PROPERTY RULE_LAUNCH_LINK ccache)
+endif (CCACHE_FOUND)
 
-foreach (dir ${SOURCE_DIR})
-    file(GLOB_RECURSE CPPFILES "${CMAKE_CURRENT_SOURCE_DIR}/${dir}/*.cpp")
-endforeach ()
+list(APPEND SOURCE_DIR "Design")
+
+#foreach (dir ${SOURCE_DIR})
+#    file(GLOB_RECURSE CPPFILES "${CMAKE_CURRENT_SOURCE_DIR}/${dir}/*.cpp")
+#endforeach ()
+
+aux_source_directory("${CMAKE_CURRENT_SOURCE_DIR}/${SOURCE_DIR}" CPPFILES)
 
 foreach (file ${CPPFILES})
     get_filename_component(fname ${file} NAME_WE)
