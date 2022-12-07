@@ -7,5 +7,6 @@
     <file url="file://$PROJECT_DIR$/Design/B-Tree/Tree.h" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Design/B-Tree/main.cpp" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Design/B-Tree/struct.h" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Design/Huffman.cpp" charset="GBK" />
   </component>
 </project>
