@@ -1,7 +1,7 @@
 #include "BTree.h"
 #include "struct.h"
-#include <stdio.h>
-#include <stdlib.h>
+#include <cstdio>
+#include <cstdlib>
 
 #ifdef WIN32
 #include <io.h>
@@ -13,20 +13,20 @@
 
 btree_node *BTree::btree_node_new()
 {
-    btree_node *node = (btree_node *) malloc(sizeof(btree_node));
-    if (NULL == node)
+    auto *node = (btree_node *) malloc(sizeof(btree_node));
+    if (nullptr == node)
     {
-        return NULL;
+        return nullptr;
     }
 
-    for (int i = 0; i < 2 * M - 1; i++)
+    for (int &i: node->k)
     {
-        node->k[i] = 0;
+        i = 0;
     }
 
-    for (int i = 0; i < 2 * M; i++)
+    for (auto &i: node->p)
     {
-        node->p[i] = NULL;
+        i = nullptr;
     }
 
     node->num = 0;
@@ -38,9 +38,9 @@ btree_node *BTree::btree_node_new()
 btree_node *BTree::btree_create()
 {
     btree_node *node = btree_node_new();
-    if (NULL == node)
+    if (nullptr == node)
     {
-        return NULL;
+        return nullptr;
     }
     return node;
 }
@@ -48,7 +48,7 @@ btree_node *BTree::btree_create()
 int BTree::btree_split_child(btree_node *parent, int pos, btree_node *child)
 {
     btree_node *new_child = btree_node_new();
-    if (NULL == new_child)
+    if (nullptr == new_child)
     {
         return -1;
     }
@@ -63,7 +63,7 @@ int BTree::btree_split_child(btree_node *parent, int pos, btree_node *child)
     }
 
     // 如果child不是叶子，还需要把指针拷过去，指针比节点多1
-    if (false == new_child->is_leaf)
+    if (!new_child->is_leaf)
     {
         for (int i = 0; i < M; i++)
         {
@@ -133,9 +133,9 @@ void BTree::btree_insert_nonfull(btree_node *node, int target)
 //插入入口
 btree_node *BTree::btree_insert(btree_node *root, int target)
 {
-    if (NULL == root)
+    if (nullptr == root)
     {
-        return NULL;
+        return nullptr;
     }
 
     // 对根节点的特殊处理，如果根是满的，唯一使得树增高的情形
@@ -143,12 +143,12 @@ btree_node *BTree::btree_insert(btree_node *root, int target)
     if (2 * M - 1 == root->num)
     {
         btree_node *node = btree_node_new();
-        if (NULL == node)
+        if (nullptr == node)
         {
             return root;
         }
 
-        node->is_leaf = 0;
+        node->is_leaf = false;
         node->p[0] = root;
         btree_split_child(node, 0, root);
         btree_insert_nonfull(node, target);
@@ -173,7 +173,7 @@ void BTree::btree_merge_child(btree_node *root, int pos, btree_node *y, btree_no
     y->k[M - 1] = root->k[pos]; // k[pos]下降为y的中间节点
 
     // 如果z非叶子，需要拷贝pointer
-    if (false == z->is_leaf)
+    if (!z->is_leaf)
     {
         for (int i = M; i < 2 * M; i++)
         {
@@ -216,7 +216,7 @@ btree_node *BTree::btree_delete(btree_node *root, int target)
     {
         btree_node *y = root->p[0];
         btree_node *z = root->p[1];
-        if (NULL != y && NULL != z &&
+        if (nullptr != y && nullptr != z &&
             M - 1 == y->num && M - 1 == z->num)
         {
             btree_merge_child(root, 0, y, z);
@@ -240,7 +240,7 @@ btree_node *BTree::btree_delete(btree_node *root, int target)
 // root至少有个t个关键字，保证不会回溯
 void BTree::btree_delete_nonone(btree_node *root, int target)
 {
-    if (true == root->is_leaf)
+    if (root->is_leaf)
     {
         // 如果在叶子节点，直接删除
         int i = 0;
@@ -264,7 +264,7 @@ void BTree::btree_delete_nonone(btree_node *root, int target)
     else
     {
         int i = 0;
-        btree_node *y = NULL, *z = NULL;
+        btree_node *y, *z = nullptr;
         while (i < root->num && target > root->k[i])
             i++;
         if (i < root->num && target == root->k[i])
@@ -303,7 +303,7 @@ void BTree::btree_delete_nonone(btree_node *root, int target)
             {
                 z = root->p[i + 1];
             }
-            btree_node *p = NULL;
+            btree_node *p = nullptr;
             if (i > 0)
             {
                 p = root->p[i - 1];
@@ -348,7 +348,7 @@ void BTree::btree_delete_nonone(btree_node *root, int target)
 int BTree::btree_search_predecessor(btree_node *root)
 {
     btree_node *y = root;
-    while (false == y->is_leaf)
+    while (!y->is_leaf)
     {
         y = y->p[y->num];
     }
@@ -359,7 +359,7 @@ int BTree::btree_search_predecessor(btree_node *root)
 int BTree::btree_search_successor(btree_node *root)
 {
     btree_node *z = root;
-    while (false == z->is_leaf)
+    while (!z->is_leaf)
     {
         z = z->p[0];
     }
@@ -378,7 +378,7 @@ void BTree::btree_shift_to_right_child(btree_node *root, int pos,
     z->k[0] = root->k[pos];
     root->k[pos] = y->k[y->num - 1];
 
-    if (false == z->is_leaf)
+    if (!z->is_leaf)
     {
         for (int i = z->num; i > 0; i--)
         {
@@ -403,7 +403,7 @@ void BTree::btree_shift_to_left_child(btree_node *root, int pos,
         z->k[j - 1] = z->k[j];
     }
 
-    if (false == z->is_leaf)
+    if (!z->is_leaf)
     {
         y->p[y->num] = z->p[0];
         for (int j = 1; j <= z->num; j++)
@@ -417,7 +417,7 @@ void BTree::btree_shift_to_left_child(btree_node *root, int pos,
 
 void BTree::btree_inorder_print(btree_node *root)
 {
-    if (NULL != root)
+    if (nullptr != root)
     {
         btree_inorder_print(root->p[0]);
         for (int i = 0; i < root->num; i++)
@@ -431,12 +431,11 @@ void BTree::btree_inorder_print(btree_node *root)
 void BTree::btree_level_display(btree_node *root)
 {
     // just for simplicty, can't exceed 200 nodes in the tree
-    btree_node *queue[200] = {NULL};
+    btree_node *queue[200] = {nullptr};
     int front = 0;
     int rear = 0;
 
     queue[rear++] = root;
-
     while (front < rear)
     {
         btree_node *node = queue[front++];
@@ -450,7 +449,7 @@ void BTree::btree_level_display(btree_node *root)
 
         for (int i = 0; i <= node->num; i++)
         {
-            if (NULL != node->p[i])
+            if (nullptr != node->p[i])
             {
                 queue[rear++] = node->p[i];
             }
@@ -472,7 +471,7 @@ void BTree::Save(btree_node *root)
 	for(int i=1;i<ss.len;i++)
 	{
 		btree_node *node = btree_node_new();
-		if(NULL == node) {
+		if(nullptr == node) {
 			return;
 		}
 	}
@@ -481,7 +480,7 @@ void BTree::Save(btree_node *root)
 */
 }
 
-BTree::BTree(void)
+BTree::BTree()
 {
     // 先判断文件是否存在
     // windows下，是io.h文件，linux下是 unistd.h文件
@@ -501,7 +500,7 @@ BTree::BTree(void)
 }
 
 
-BTree::~BTree(void)
-{
-    //	fclose(pfile);
-}
+BTree::~BTree(void) = default;
+//{
+//    //	fclose(pfile);
+//}

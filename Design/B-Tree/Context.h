@@ -1,13 +1,12 @@
 #pragma once
 #include "Tree.h"
-/*************************************调度类****************************************/
-//调度类,根据传进来的参数,选择具体某个策略
+
 class Context {
 private:
     Tree *strategyChild;
 
 public:
-    Context(Tree *child)
+    explicit Context(Tree *child)
     {
         strategyChild = child;
     }
@@ -21,7 +20,7 @@ public:
         strategyChild->level_display();
     };
 
-    void Del(int target)
+    [[maybe_unused]] void Del(int target)
     {
         strategyChild->del(target);
     };
@@ -32,7 +31,7 @@ public:
     };
 
     // tree node num
-    void NodeNum_Print()
+    [[maybe_unused]] void NodeNum_Print()
     {
         strategyChild->NodeNum_print();
     };

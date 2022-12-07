@@ -4,7 +4,7 @@ INC=
 LIB= -lpthread
 
 CC=g++
-CC_FLAG=-Wall
+CC_FLAG=-Wall -std=c++20 -DWIN32
 
 PRG=BTree_Demo
 OBJ=*.o

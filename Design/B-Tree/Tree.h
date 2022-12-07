@@ -1,6 +1,6 @@
 #pragma once
 #include "struct.h"
-#include <stdio.h>
+#include <cstdio>
 /**
  * @brief the degree of btree
  * key per node: [M-1, 2M-1]
@@ -9,9 +9,9 @@
 
 class Tree {
 protected:
-    btree_node *roots;
+    btree_node *roots{};
 
-    FILE *pfile;
+    FILE *pfile{};
 
     /**
 	 * @brief create a btree root
@@ -153,11 +153,11 @@ protected:
 
     int btree_node_num; //记录多少个树结点： how many  btree_node
 public:
-    Tree(void)
+    Tree()
     {
         btree_node_num = 0;
     };
-    virtual ~Tree(void)
+    virtual ~Tree()
     {
         btree_node_num = 0;
         delete roots;
@@ -196,7 +196,7 @@ public:
     };
 
     // tree node num
-    void NodeNum_print()
+    void NodeNum_print() const
     {
         printf("%d\n", btree_node_num);
     };

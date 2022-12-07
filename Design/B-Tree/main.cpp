@@ -1,30 +1,29 @@
 #include "BPlusTree.h"
 #include "BTree.h"
 #include "Context.h"
-#include <stdio.h>
-#include <stdlib.h>
+#include <cstdio>
 
 int main()
 {
 
-    /*************************************直接调用B  B+ 的调度使用****************************************/
-    /************************************* Direct call B + B method ****************************************/
     BTree bt;
     BPlusTree bpt;
 
     int arr[] = {18, 31, 12, 10, 15, 48, 45, 47, 50, 52, 23, 30, 20};
-    for (int i = 0; i < sizeof(arr) / sizeof(int); i++)
+    // 1.从键盘输入一组关键字插入B_树中；
+    for (int i: arr)
     {
-        bt.insert(arr[i]);
-        bpt.insert(arr[i]);
+        // 2.向B-树中插入一个关键字；
+        bt.insert(i);
+        bpt.insert(i);
     }
-    printf("no delete data:\n");
-    printf("display about B-Tree:\n");
+    printf("INFO: No Pending Delete Data\n");
+    printf("INFO: Display B-Tree:\n");
     bt.level_display();
     bt.inorder_print();
     printf("\n\n");
 
-    printf("display about B+ Tree:\n");
+    printf("INFO: Display B+ Tree:\n");
     bt.level_display();
     bt.inorder_print();
     printf("\n");
@@ -32,55 +31,50 @@ int main()
     printf("\n");
     bt.NodeNum_print();
     bpt.NodeNum_print();
-    printf("delete data...\n");
+    printf("WARN: Deleting Data!\n");
     int todel[] = {15, 18, 23, 30, 31, 52, 50};
 
-    for (int i = 0; i < sizeof(todel) / sizeof(int); i++)
+    for (int i: todel)
     {
-        printf("after delete %d\n", todel[i]);
-        bt.del(todel[i]);
-        bpt.del(todel[i]);
+        // 3.从B_树中删除一个关键字；
+        bt.del(i);
+        bpt.del(i);
+        printf("DEBUG: Deleted %d\n", i);
     }
 
+    // 7.求出一棵B_树的节点数；
     bt.NodeNum_print();
     bpt.NodeNum_print();
 
-    printf("\n\ndelete after data:\n");
-    printf("display about B-Tree:\n");
+    printf("\n\nINFO: Delete After Data:\n");
+    printf("INFO: Display B-Tree:\n");
+    // 5.遍历输出B_树中所有关键字；
     bt.level_display();
     bt.inorder_print();
     printf("\n\n");
 
-    printf("display about B+ Tree:\n");
+    printf("INFO: Display B+ Tree:\n");
     bpt.level_display();
     bpt.inorder_print();
     printf("\n");
     bpt.linear_print();
     printf("\n");
 
-    /***************************************************************************************************/
-    /***************************************************************************************************/
-    /************************************* 用策略方法的调用B    ****************************************/
-    /************************************* strategy pattern method ****************************************/
 
-    printf("strategy method start\n");
+    printf("INFO: Strategy Method Start\n");
 
-    //“具体策略类”只在定义多个“调度类”时使用
-    Context *Context_A = new Context(new BTree()),
-            *Context_B = new Context(new BPlusTree());
+    auto *Context_A = new Context(new BTree()),
+         *Context_B = new Context(new BPlusTree());
 
-    //调用方法，只通过“调度类”实现，算法之间的差异已被屏蔽
     int arrnum[] = {10, 2, 3, 4, 5, 9, 8, 7, 6, 1};
-    for (int i = 0; i < sizeof(arrnum) / sizeof(int); i++)
+    for (int i: arrnum)
     {
-        Context_A->Insert(arrnum[i]);
-        Context_B->Insert(arrnum[i]);
+        Context_A->Insert(i);
+        Context_B->Insert(i);
     }
     Context_A->Inorder_Print();
     printf("\n\n");
     Context_B->LevelDisplay();
 
-    /***************************************************************************************************/
-    /***************************************************************************************************/
     return 0;
 }
