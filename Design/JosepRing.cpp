@@ -116,10 +116,8 @@ void Josephu(LinkedList l, int countNum)
     }
 }
 
-// 输入每个人的密码
 void inputPssd(LinkedList &l)
 {
-    // 辅助指针
     LinkedList cur = l;
     while (true)
     {
