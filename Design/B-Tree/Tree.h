@@ -130,7 +130,7 @@ protected:
     virtual btree_node *btree_delete(btree_node *root, int target) = 0;
 
     /**
-	 * @brief inorder traverse the btree
+	 * @brief InOrder traverse the btree
 	 *
 	 * @param root: root of treee
 	 */

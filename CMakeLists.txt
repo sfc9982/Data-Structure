@@ -27,3 +27,5 @@ foreach (file ${CPPFILES})
 endforeach ()
 
 #set_property(TARGET run_6114 PROPERTY CXX_STANDARD 11)
+
+add_executable(CTF Design/CTF.cpp)

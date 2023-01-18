@@ -74,11 +74,11 @@ int Choice()
     //char filefile[100] ;
     while (!key)
     {
-        printf("ÇëÊäÈëÄãÒª´ò¿ªµÄÎÄ¼şÃû¼°Â·¾¶£¬ÈçD:\\Code\\Data-Structure\\Design\\h.txt\n");
+        printf("è¯·è¾“å…¥ä½ è¦æ‰“å¼€çš„æ–‡ä»¶ååŠè·¯å¾„ï¼Œå¦‚D:\\Code\\Data-Structure\\Design\\h.txt\n");
         gets(filefile);
         if ((fp = fopen(filefile, "r")) == NULL)
         {
-            printf("´ò¿ªÎÄ¼ş%s³öÏÖ´íÎó\n", filefile);
+            printf("æ‰“å¼€æ–‡ä»¶%så‡ºç°é”™è¯¯\n", filefile);
             key = 0;
             return 0;
         }
@@ -90,7 +90,7 @@ int Choice()
         printf("%c ", a);
         while (s)
         {
-            if (s->flag == a) //Èç¹ûÔÚÎÄ±¾ÖĞ³öÏÖÁË, µ±Ç°×Ö·û, ÄÇÃ´µ±Ç°×Ö·ûµÄÈ¨ÖØÖµ++
+            if (s->flag == a) //å¦‚æœåœ¨æ–‡æœ¬ä¸­å‡ºç°äº†, å½“å‰å­—ç¬¦, é‚£ä¹ˆå½“å‰å­—ç¬¦çš„æƒé‡å€¼++
             {
                 s->c++;
                 instance = 1;
@@ -98,7 +98,7 @@ int Choice()
             }
             s = s->next;
         }
-        if (instance == 0) //Èç¹ûµ±Ç°ÎÄ±¾Ã»ÓĞ¸Ã×Ö·û, ÄÇÃ´, ´´½¨¸Ã×Ö·û,²åÈëµ½ÎÄ±¾µ±ÖĞ
+        if (instance == 0) //å¦‚æœå½“å‰æ–‡æœ¬æ²¡æœ‰è¯¥å­—ç¬¦, é‚£ä¹ˆ, åˆ›å»ºè¯¥å­—ç¬¦,æ’å…¥åˆ°æ–‡æœ¬å½“ä¸­
         {
             p = new ASCII;
             p->flag = a;
@@ -106,7 +106,7 @@ int Choice()
             m->next = p;
             p->next = NULL;
             m = p;
-            num++; //ÎÄ±¾ÖĞ¶àÉÙ½áµã
+            num++; //æ–‡æœ¬ä¸­å¤šå°‘ç»“ç‚¹
         }
         instance = 0;
     }
@@ -115,12 +115,12 @@ int Choice()
     fclose(fp);
     return num;
 }
-void Select(HuffmanTree &HT, int num, int *s1, int *s2) //Ñ°ÕÒÁ½¸ö×îĞ¡µÄÇÒË«Ç×Îª0µÄ×îĞ¡½Úµã
+void Select(HuffmanTree &HT, int num, int *s1, int *s2) //å¯»æ‰¾ä¸¤ä¸ªæœ€å°çš„ä¸”åŒäº²ä¸º0çš„æœ€å°èŠ‚ç‚¹
 {
-    int i, sec = 0, fir = 0; //aÊÇ´ÎĞ¡, bÊÇ×îĞ¡
+    int i, sec = 0, fir = 0; //aæ˜¯æ¬¡å°, bæ˜¯æœ€å°
     int second = -1, first = -1;
-    HTNode L1, L2;             //L1´ÎĞ¡, L2×îĞ¡
-    for (i = num; i >= 1; i--) //Ñ¡ÔñÁ½¸öË«Ç×²¿²»Îª0µÄ½áµã
+    HTNode L1, L2;             //L1æ¬¡å°, L2æœ€å°
+    for (i = num; i >= 1; i--) //é€‰æ‹©ä¸¤ä¸ªåŒäº²éƒ¨ä¸ä¸º0çš„ç»“ç‚¹
     {
         if (HT[i].parent == 0 && second == -1)
             second = i;
@@ -144,7 +144,7 @@ void Select(HuffmanTree &HT, int num, int *s1, int *s2) //Ñ°ÕÒÁ½¸ö×îĞ¡µÄÇÒË«Ç×Îª
         sec = first;
         fir = second;
     }
-    for (i = num; i >= 1; i--) //´ÓÊ£ÏÂµÄ½ÚµãÖĞÕÒµ½Á½¸ö×îĞ¡µÄ½Úµã
+    for (i = num; i >= 1; i--) //ä»å‰©ä¸‹çš„èŠ‚ç‚¹ä¸­æ‰¾åˆ°ä¸¤ä¸ªæœ€å°çš„èŠ‚ç‚¹
     {
         if ((HT[i].weight < L2.weight) && (HT[i].parent == 0) && i != second && i != first)
         {
@@ -162,7 +162,7 @@ void Select(HuffmanTree &HT, int num, int *s1, int *s2) //Ñ°ÕÒÁ½¸ö×îĞ¡µÄÇÒË«Ç×Îª
     *s1 = fir;
     *s2 = sec;
 }
-bool CreatHuffmanaTree(HuffmanTree &HT, int num) //´´½¨¹ş·òÂüÊ÷
+bool CreatHuffmanaTree(HuffmanTree &HT, int num) //åˆ›å»ºå“ˆå¤«æ›¼æ ‘
 {
     int m, i;
     LinkList p;
@@ -196,7 +196,7 @@ bool CreatHuffmanaTree(HuffmanTree &HT, int num) //´´½¨¹ş·òÂüÊ÷
     }
     return true;
 }
-bool CreatHuffmanaCode(HuffmanTree HT, int num) //´´½¨¹ş·òÂü±àÂë
+bool CreatHuffmanaCode(HuffmanTree HT, int num) //åˆ›å»ºå“ˆå¤«æ›¼ç¼–ç 
 {
     char *cd;
     int i, c, f, start, key = 0;
@@ -205,11 +205,11 @@ bool CreatHuffmanaCode(HuffmanTree HT, int num) //´´½¨¹ş·òÂü±àÂë
     getchar();
     while (!key)
     {
-        printf("ÇëÊäÈëÄãÒª±£´æÃÜÂë±¾µÄÎÄ¼şÃû¼°Â·¾¶£¬Èç£ºD:\\Code\\Data-Structure\\Design\\dict.txt\n");
+        printf("è¯·è¾“å…¥ä½ è¦ä¿å­˜å¯†ç æœ¬çš„æ–‡ä»¶ååŠè·¯å¾„ï¼Œå¦‚ï¼šD:\\Code\\Data-Structure\\Design\\dict.txt\n");
         gets(filenamemi);
         if ((fp = fopen(filenamemi, "w")) == NULL)
         {
-            printf("±£´æÎÄ¼ş%s³öÏÖ´íÎó, ÇëÖØĞÂÊäÈë\n", filenamemi);
+            printf("ä¿å­˜æ–‡ä»¶%så‡ºç°é”™è¯¯, è¯·é‡æ–°è¾“å…¥\n", filenamemi);
             key = 0;
         }
         key = 1;
@@ -239,7 +239,7 @@ bool CreatHuffmanaCode(HuffmanTree HT, int num) //´´½¨¹ş·òÂü±àÂë
     fclose(fp);
 }
 
-bool CreatTxtCode(int num) //´´½¨ÎÄ±¾±àÂë
+bool CreatTxtCode(int num) //åˆ›å»ºæ–‡æœ¬ç¼–ç 
 {
     FILE *fp, *fp1, *fp2;
     int key = 0;
@@ -249,11 +249,11 @@ bool CreatTxtCode(int num) //´´½¨ÎÄ±¾±àÂë
     getchar();
     while (!key)
     {
-        printf("ÇëÊäÈëÄãÒª±£´æ±àÂëµÄÎÄ¼şÃû¼°Â·¾¶£¬ÈçD:\\Code\\Data-Structure\\Design\\encode.txt\n");
+        printf("è¯·è¾“å…¥ä½ è¦ä¿å­˜ç¼–ç çš„æ–‡ä»¶ååŠè·¯å¾„ï¼Œå¦‚D:\\Code\\Data-Structure\\Design\\encode.txt\n");
         gets(filebian);
         if ((fp = fopen(filebian, "w")) == NULL)
         {
-            printf("±£´æÎÄ¼ş%s³öÏÖ´íÎó, ÇëÖØĞÂÊäÈë\n", filebian);
+            printf("ä¿å­˜æ–‡ä»¶%så‡ºç°é”™è¯¯, è¯·é‡æ–°è¾“å…¥\n", filebian);
             key = 0;
         }
         key = 1;
@@ -293,26 +293,26 @@ bool CreatTxtCode(int num) //´´½¨ÎÄ±¾±àÂë
     fclose(fp2);
     return true;
 }
-bool ReductionTxt(HuffmanTree HT, int num) //´´½¨ÎÄ±¾½Úµã
+bool ReductionTxt(HuffmanTree HT, int num) //åˆ›å»ºæ–‡æœ¬èŠ‚ç‚¹
 {
-    FILE *fp, *fp1; //fp----±àÂëÎÄ¼ş    fp1------»¹Ô­Ö®ºóµÄÎÄ¼ş
+    FILE *fp, *fp1; //fp----ç¼–ç æ–‡ä»¶    fp1------è¿˜åŸä¹‹åçš„æ–‡ä»¶
     int key = 0;
     char filename[100], filename1[100];
     char a;
     getchar();
     if ((fp = fopen(filebian, "r")) == NULL)
     {
-        printf("´ò¿ªÎÄ¼ş%s³öÏÖ´íÎó\n", filebian);
+        printf("æ‰“å¼€æ–‡ä»¶%så‡ºç°é”™è¯¯\n", filebian);
         key = 0;
         return false;
     }
     while (!key)
     {
-        printf("ÇëÊäÈëÄãÒª±£´æµÄÎÄ¼şÃû¼°Â·¾¶£¬Èç£ºD:\\Code\\Data-Structure\\Design\\decode.txt\n");
+        printf("è¯·è¾“å…¥ä½ è¦ä¿å­˜çš„æ–‡ä»¶ååŠè·¯å¾„ï¼Œå¦‚ï¼šD:\\Code\\Data-Structure\\Design\\decode.txt\n");
         gets(filename1);
         if ((fp1 = fopen(filename1, "w")) == NULL)
         {
-            printf("´ò¿ªÎÄ¼ş%s³öÏÖ´íÎó\n", filename1);
+            printf("æ‰“å¼€æ–‡ä»¶%så‡ºç°é”™è¯¯\n", filename1);
             key = 0;
             return false;
         }
@@ -339,10 +339,10 @@ bool ReductionTxt(HuffmanTree HT, int num) //´´½¨ÎÄ±¾½Úµã
     fclose(fp1);
     return true;
 }
-void zip() //Ñ¹ËõÎÄ¼ş
+void zip() //å‹ç¼©æ–‡ä»¶
 {
     int fpnumber = 0, fp1number = 0;
-    FILE *fp, *fp1; //fp----±àÂëÎÄ¼ş    fp1------Ñ¹ËõÎÄ¼ş
+    FILE *fp, *fp1; //fp----ç¼–ç æ–‡ä»¶    fp1------å‹ç¼©æ–‡ä»¶
     int key = 0, in, i;
     char filename[100], filename1[100];
     char a;
@@ -350,18 +350,18 @@ void zip() //Ñ¹ËõÎÄ¼ş
     getchar();
     if ((fp = fopen(filebian, "r")) == NULL)
     {
-        printf("´ò¿ªÎÄ¼ş%s³öÏÖ´íÎó\n", filebian);
+        printf("æ‰“å¼€æ–‡ä»¶%så‡ºç°é”™è¯¯\n", filebian);
         key = 0;
         return;
     }
     key = 0;
     while (!key)
     {
-        printf("ÇëÊäÈë±£´æµÄÎÄ¼şÃû¼°Â·¾¶£¬ÈçD:\\Code\\Data-Structure\\Design\\encode.txt\n");
+        printf("è¯·è¾“å…¥ä¿å­˜çš„æ–‡ä»¶ååŠè·¯å¾„ï¼Œå¦‚D:\\Code\\Data-Structure\\Design\\encode.txt\n");
         gets(filename1);
         if ((fp1 = fopen(filename1, "w")) == NULL)
         {
-            printf("´ò¿ªÎÄ¼ş%s³öÏÖ´íÎó\n", filename1);
+            printf("æ‰“å¼€æ–‡ä»¶%så‡ºç°é”™è¯¯\n", filename1);
             key = 0;
             return;
         }
@@ -384,13 +384,13 @@ void zip() //Ñ¹ËõÎÄ¼ş
             sum = 0;
         }
     }
-    fseek(fp, 0L, SEEK_END);                          /*ÀûÓÃfseekº¯Êı½«Ö¸Õë¶¨Î»ÔÚÎÄ¼ş½áÎ²µÄÎ»ÖÃ*/
-    fpnumber = ftell(fp);                             /*ÀûÓÃftellº¯Êı·µ»ØÖ¸ÕëÏà¶ÔÓÚÎÄ¼ş¿ªÍ·µÄÎ»ÖÃ£¬ÒÔ×Ö½Ú¼ÆËã*/
-    printf("Ô­ÎÄ¼şËùÕ¼µÄ×Ö½ÚÊıÎª%ld¸ö\n", fpnumber);  /*½øĞĞÊä³ö*/
-    fseek(fp1, 0L, SEEK_END);                         /*Àû   ÓÃfseekº¯Êı½«Ö¸Õë¶¨Î»ÔÚÎÄ¼ş½áÎ²µÄÎ»ÖÃ*/
-    fp1number = ftell(fp1);                           /*ÀûÓÃftellº¯Êı·µ»ØÖ¸ÕëÏà¶ÔÓÚÎÄ¼ş¿ªÍ·µÄÎ»ÖÃ£¬ÒÔ×Ö½Ú¼ÆËã*/
-    printf("Ñ¹ËõºóËùÕ¼µÄ×Ö½ÚÊıÎª%ld¸ö\n", fp1number); /*½øĞĞÊä³ö*/
-    printf("Ñ¹Ëõ±ÈÎª%d/%d", fp1number, fpnumber);
+    fseek(fp, 0L, SEEK_END);                          /*åˆ©ç”¨fseekå‡½æ•°å°†æŒ‡é’ˆå®šä½åœ¨æ–‡ä»¶ç»“å°¾çš„ä½ç½®*/
+    fpnumber = ftell(fp);                             /*åˆ©ç”¨ftellå‡½æ•°è¿”å›æŒ‡é’ˆç›¸å¯¹äºæ–‡ä»¶å¼€å¤´çš„ä½ç½®ï¼Œä»¥å­—èŠ‚è®¡ç®—*/
+    printf("åŸæ–‡ä»¶æ‰€å çš„å­—èŠ‚æ•°ä¸º%ldä¸ª\n", fpnumber);  /*è¿›è¡Œè¾“å‡º*/
+    fseek(fp1, 0L, SEEK_END);                         /*åˆ©   ç”¨fseekå‡½æ•°å°†æŒ‡é’ˆå®šä½åœ¨æ–‡ä»¶ç»“å°¾çš„ä½ç½®*/
+    fp1number = ftell(fp1);                           /*åˆ©ç”¨ftellå‡½æ•°è¿”å›æŒ‡é’ˆç›¸å¯¹äºæ–‡ä»¶å¼€å¤´çš„ä½ç½®ï¼Œä»¥å­—èŠ‚è®¡ç®—*/
+    printf("å‹ç¼©åæ‰€å çš„å­—èŠ‚æ•°ä¸º%ldä¸ª\n", fp1number); /*è¿›è¡Œè¾“å‡º*/
+    printf("å‹ç¼©æ¯”ä¸º%d/%d", fp1number, fpnumber);
     fclose(fp);
     fclose(fp1);
 }
@@ -400,12 +400,12 @@ int main()
     HuffmanTree L;
 start:
     printf("******************************************************************\n\n");
-    printf("¹ş·òÂü±àÂëÒëÂëÆ÷\n\n");
-    printf("*\t1¡¢Ñ¡ÔñĞèÒª½øĞĞ±àÂëµÄÎÄ¼ş\t\t*\n\n");
-    printf("*\t2¡¢½¨Á¢¹ş·òÂüÊ÷\t\t\t\t*\n\n");
-    printf("*\t3¡¢½¨Á¢ÃÜÂë±¾²¢¶ÔÎÄ¼ş±àÂë\t\t*\n\n");
-    printf("*\t4¡¢Ñ¡ÔñĞèÒª½øĞĞ½âÂëµÄÎÄ¼ş²¢½âÂë\t\t*\n\n");
-    printf("*\t5¡¢°´Î»Ñ¹Ëõ·½Ê½¶ÔÎÄ¼ş½øĞĞÑ¹Ëõ\t\t*\n\n\n");
+    printf("å“ˆå¤«æ›¼ç¼–ç è¯‘ç å™¨\n\n");
+    printf("*\t1ã€é€‰æ‹©éœ€è¦è¿›è¡Œç¼–ç çš„æ–‡ä»¶\t\t*\n\n");
+    printf("*\t2ã€å»ºç«‹å“ˆå¤«æ›¼æ ‘\t\t\t\t*\n\n");
+    printf("*\t3ã€å»ºç«‹å¯†ç æœ¬å¹¶å¯¹æ–‡ä»¶ç¼–ç \t\t*\n\n");
+    printf("*\t4ã€é€‰æ‹©éœ€è¦è¿›è¡Œè§£ç çš„æ–‡ä»¶å¹¶è§£ç \t\t*\n\n");
+    printf("*\t5ã€æŒ‰ä½å‹ç¼©æ–¹å¼å¯¹æ–‡ä»¶è¿›è¡Œå‹ç¼©\t\t*\n\n\n");
     printf("******************************************************************\n\n");
     int option = 0;
     cin >> option;
@@ -420,20 +420,20 @@ start:
                 break;
             case 2:
                 if (CreatHuffmanaTree(L, num))
-                    cout << "³É¹¦" << endl;
+                    cout << "æˆåŠŸ" << endl;
                 break;
             case 3:
                 CreatHuffmanaCode(L, num);
                 if (CreatTxtCode(num))
-                    cout << "³É¹¦" << endl;
+                    cout << "æˆåŠŸ" << endl;
                 break;
             case 4:
                 if (ReductionTxt(L, num))
-                    cout << "³É¹¦" << endl;
+                    cout << "æˆåŠŸ" << endl;
                 break;
             case 5:
                 zip();
-                cout << "Ñ¹Ëõ³É¹¦";
+                cout << "å‹ç¼©æˆåŠŸ";
                 break;
         }
         goto start;
